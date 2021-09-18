@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dummy_text_generator.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+
+    <div class="head">
+        <span>
+Dummy Text Generator
+        </span>
+    </div>
+
+
+
+<div class="box">
+    <div id="answer">
+        <p id="answerPara" class="fetchP"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dicta repellat voluptatibus repudiandae, error incidunt nisi fugit laudantium, sequi voluptates aliquam magni facere exercitationem esse quasi dolore ad autem temporibus?</p>
+
+    </div>
+
+
+    <div class="copy-btn" id="copy">
+        <span id="copyText">Copy</span><i class="fa fa-copy"></i>
+    </div>
+   <div class="all-btns">
+       
+
+       <input type="number"  id="numberofpara" value="2">
+       <select name="" id="select" >
+           <option value="Paragraph">Paragraph</option>
+       </select>
+<!-- <input type="submit" name="" id="generate" value="generate"> -->
+<button id="generate">Generate</button>
+    
+   </div>
+
+</div>
+
+
+<footer>
+ <div class="foot">
+
+   <p>Coded by <span style="color: rgb(243, 200, 9);">Vikas Kumar</span>| Follow Me |</p>
+<div class="social-icons">
+ <a href="https://www.linkedin.com/in/vikas-kumar-abb131192/"><i class="fa fa-linkedin  social-btn"></i></a> 
+ <a href="https://www.instagram.com/vkraj.07/"> <i class="fa fa-instagram  social-btn"></i></a>
+<!-- <i class="fa fa-github  social-btn"></i> -->
+  <a href="https://www.facebook.com/profile.php?id=100008818996159">  <i class="fa fa-facebook  social-btn"></i></a>
+  <a href="mailto: vkmi0853@gmail.com"> <i class="fa fa-envelope  social-btn"></i></a> 
+</div>
+ </div>
+</footer>
+    
+    <script>
+
+
+var copyText=document.getElementById('copyText');
+
+var generateBtn=document.getElementById('generate');
+
+var paraNumber=document.getElementById('numberofpara');
+var copyBtn=document.getElementById('copy');
+var answerPara=document.getElementById('answerPara');
+
+copyBtn.onclick=function(){
+  let values = [];
+   document.querySelectorAll('#answerPara').forEach( (p) => values.push( p.innerHTML ) );
+   let text = document.createElement('textarea');
+   document.body.appendChild(text);
+   text.value = values.join('\n');
+   text.select();
+   document.execCommand('copy');
+   text.parentNode.removeChild(text);
+
+
+ 
+
+
+   
+}
+
+copyText.innerHTML="Copy";
+
+generateBtn.addEventListener('click',()=>{
+var pno1=paraNumber.value;
+console.log(pno1);
+
+
+
+
+
+       fetch("https://mashape-community-skate-ipsum.p.rapidapi.com/" +pno1+ "/1/JSON", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "mashape-community-skate-ipsum.p.rapidapi.com",
+		"x-rapidapi-key": "529aecac6cmsh544c40f2c17024dp184f93jsnef36519e635a"
+	}
+})
+
+.then((apidata)=>{
+
+return apidata.json();
+
+}).then((actualdata)=>{
+
+
+
+
+ console.log(actualdata);
+var answer=document.getElementById('answer');
+ answer.innerHTML="";
+
+
+copyText.innerHTML="Copy";
+
+ 
+for(var i=0;i<actualdata.length; i++)
+{
+
+
+var fetchdataAll=actualdata[i];
+
+    var p=document.createElement('p');
+    p.classList.add('fetchP');
+    p.innerHTML=fetchdataAll;
+
+    console.log(p);
+
+    answer.appendChild(p);
+
+    
+ document.getElementById('copy').onclick = function() {
+copyText.innerHTML="Copied";
+    console.log('working');
+   let values = [];
+   document.querySelectorAll('.fetchP').forEach( (p) => values.push( p.innerHTML ) );
+   let text = document.createElement('textarea');
+   document.body.appendChild(text);
+   text.value = values.join('\n');
+   text.select();
+   document.execCommand('copy');
+   text.parentNode.removeChild(text);
+
+
+ }
+
+
+
+}
+
+
+
+
+// var anserpara=document.getElementById('answerPara')
+
+
+
+
+
+
+})
+
+
+
+
+
+})
+
+
+
+
+
+.catch(err => {
+	console.error(err);
+})
+
+
+
+
+    </script>
+</body>
+</html>
+
