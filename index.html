@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="email_test.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+<h2>Send Email By <span style="color: rgb(255, 255, 255);">HTML</span>  Only</h2>
+<div class="container">
+
+<div class="form">
+<form id="form">
+<input type="email" placeholder="Your Email" required id="userEmail">
+<input type="text" placeholder="Your Subject" required id="userSubject">
+<textarea name="" id="userMessage" cols="30" rows="10" placeholder="Your Message" required  ></textarea>
+
+<br>
+
+
+<div class="btn-section">
+<input type="submit" value="Save" id="save">
+<a  id="anchor" href="mailto:zoppo080@gmail.com?Subject=new post&body=this is demo" onclick="func()"  >Send Email</a>
+</div>
+
+</form>
+</div>
+
+
+
+</div>
+
+<footer>
+ <div class="foot">
+
+   <p>Coded by <span style="color: rgb(243, 200, 9);">Vikas Kumar</span>| Follow Me |</p>
+<div class="social-icons">
+ <a href="https://www.linkedin.com/in/vikas-kumar-abb131192/"><i class="fa fa-linkedin  social-btn"></i></a> 
+ <a href="https://www.instagram.com/vkraj.07/"> <i class="fa fa-instagram  social-btn"></i></a>
+<!-- <i class="fa fa-github  social-btn"></i> -->
+  <a href="https://www.facebook.com/profile.php?id=100008818996159">  <i class="fa fa-facebook  social-btn"></i></a>
+  <a href="mailto: vkmi0853@gmail.com"> <i class="fa fa-envelope  social-btn"></i></a> 
+</div>
+
+ </div>
+</footer>
+<script>
+
+var form=document.getElementById('form').addEventListener('submit',(e)=>{
+e.preventDefault();
+console.log('ok')
+
+var anchor=document.getElementById('anchor').style.pointerEvents="auto";
+var anchor=document.getElementById('anchor').classList.add('active');
+
+})
+
+    function func(){
+    var btn=document.getElementById('btn');
+var userEmail=document.getElementById('userEmail').value;
+var userSubject=document.getElementById('userSubject').value;
+var userMessage=document.getElementById('userMessage').value;
+
+
+
+ var anchor=document.getElementById('anchor').href="mailto:"+userEmail+"?Subject="+userSubject+"&body="+userMessage+"";
+     }
+</script>
+
+
+
+
+
+
+
+</body>  
+</html>
